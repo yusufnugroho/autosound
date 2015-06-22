@@ -34,13 +34,13 @@
                      
                         <!--Sound-->
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Sound<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Audio<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo base_url();?>sound/">List Sound</a>
+                                    <a href="<?php echo base_url();?>sound/">List Audio</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url();?>sound/uploadForm">Upload Sound</a>
+                                    <a href="<?php echo base_url();?>sound/uploadForm">Upload Audio</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

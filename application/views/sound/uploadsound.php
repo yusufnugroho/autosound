@@ -52,7 +52,7 @@
                                                 ?>
                                             </select>
                                         </div>
-                                        <input type="submit" class="btn btn-info" style="float:right" value="Upload">
+                                        <input type="submit" class="btn btn-info" style="float:right" value="Submit">
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

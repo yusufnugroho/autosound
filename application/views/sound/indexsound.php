@@ -23,33 +23,16 @@
                                     <th class='text-center'> No</th>
                                     <th class='text-center'> File Name</th>
                                     <th class='text-center'> Tag Sound</th>
+                                    <th class='text-center'> Category</th>                                    
                                     <th class='text-center'> Date</th>
                                     <th class='text-center'> Time</th>
+                                    <th class='text-center'> From Date</th>
+                                    <th class='text-center'> To Date</th>
                                     <th class='text-center' width='14%'>Action</th>
                                 </tr>   
                             </thead>
                             <tbody>                                
-                                <?php
-                                //$no = 1;
-                                /*
-                                foreach ($materi as $row) {
-                                    ?>
-                                    <tr>
-                                        <td> <?php echo $no;?>
-                                            <td> <?php echo $row['JUDUL_MATERI'];?></td>
-                                            <td> <?php echo $row['TANGGAL_MATERI'];?></td>
-                                            <td> <?php echo $row['PENULIS_MATERI'];?></td>
-                                            <td> <?php echo $row['TAG_MATERI'];?></td>
-                                            <td>
-                                                <a href="#" class="btn btn-info" value="Lihat">Lihat</a>
-                                                <a href="#" class="btn btn-warning" value="Ubah">Ubah</a> 
-                                                <a href="#" class="btn btn-danger" value="Hapus">Hapus</a>
-                                            </td>   
-                                        </tr>
-                                        <?php
-                                        $no++;
-                                    }*/
-                                    ?>
+                                
                                     <?php
                                     $no = 1;
                                     foreach ($file as $row) {
@@ -58,8 +41,11 @@
                                             <td> <?php echo $no;?>
                                                 <td> <a href="<?php echo base_url();?><?php echo $row['path'];?>" download> <?php echo $row['nama_file'];?></a></td>
                                                 <td> <?php echo $row['tag'];?></td>
+                                                <td> <?php echo $row['pilihan'];?></td>
                                                 <td> <?php echo $row['tanggal'];?></td>
                                                 <td> <?php echo $row['time'];?></td>
+                                                <td> <?php echo $row['from'];?></td>
+                                                <td> <?php echo $row['to'];?></td>
                                                 <td>
                                                     <a href="<?php echo base_url();?>sound/showSound/<?php echo $row['id'];?>" class="btn btn-info" value="Play">Play</a>
                                                     <a href="<?php echo base_url();?>sound/delete/<?php echo $row['id'];?>" class="btn btn-danger" value="Delete">Delete</a>
