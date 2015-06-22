@@ -37,7 +37,7 @@ class Sound extends CI_Controller {
 		    'nama_file' => $_POST['judul'],
 		    'path' => $target_Path,
                     'tag' => $_POST['tag'],
-                    'tanggal' => $tanggal,
+                    'tanggal' => $_POST['time'],
                     'time' => $jam,
 		);
 		if($this->m_sound->insertFile($data))

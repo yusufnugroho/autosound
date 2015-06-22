@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+
+<!--Date Picker-->
+
+
+
+
 <link href="<?php echo base_url();?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
@@ -22,6 +28,8 @@
 
 <!--CK-EDITOR JS-->
 <script src="<?php echo base_url();?>assets/ckeditor/ckeditor.js"></script>
+
+
 </head>
 
 <body>

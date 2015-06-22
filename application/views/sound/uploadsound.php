@@ -52,6 +52,25 @@
                                                 ?>
                                             </select>
                                         </div>
+                                        <!--Debug On-->
+                                        
+                                        
+                                        <div class="form-group">
+                                            <label>Time</label>
+                                            <input type='date' name='time'class="form-control datepicker">
+                                            <script>
+                                                $(document).ready(function(){
+                                                $('.datepicker').datepicker({
+                                                    //format: 'yyyy-mm-dd',
+                                                    format: 'HH:mm',
+                                                    //timeFormat:  "HH:mm"
+                                                    //format: 'HH:ii'
+                                                });
+                                                });
+                                            </script>
+                                        </div>
+                                        <!--Debug Off-->
+                                        
                                         <input type="submit" class="btn btn-info" style="float:right" value="Submit">
                                     </form>
                                 </div>
