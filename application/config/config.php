@@ -16,8 +16,12 @@
 | environments.
 |
 */
+//Remove /index.php
+/*  $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+    $config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
+    $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+*/
 $config['base_url'] = '';
-
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -28,7 +32,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -226,7 +230,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'hihihi';
 
 /*
 |--------------------------------------------------------------------------
@@ -281,7 +285,7 @@ $config['cookie_secure']	= FALSE;
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
