@@ -47,8 +47,8 @@
                                                 <td> <?php echo $row['from'];?></td>
                                                 <td> <?php echo $row['to'];?></td>
                                                 <td>
-                                                    <a href="<?php echo base_url();?>sound/showSound/<?php echo $row['id'];?>" class="btn btn-info" value="Play">Play</a>
-                                                    <a href="<?php echo base_url();?>sound/delete/<?php echo $row['id'];?>" class="btn btn-danger" value="Delete">Delete</a>
+                                                    <a href="<?php echo base_url();?>sound/showSound/<?php echo $row['id'];?>" class="btn btn-info"  value="Play">Play</a>
+                                                    <a href="<?php echo base_url();?>sound/delete/<?php echo $row['id'];?>" class="btn btn-danger" Onclick="return ConfirmDelete();" value="Delete">Delete</a>
                                                 </td>   
                                             </tr>
                             <div id="debugTime">
@@ -117,11 +117,19 @@
                                             <script> 
                                                 function autoRefresh()
                                                {
-                                                       window.location = window.location.href;
+                                                    window.location = window.location.href;
                                                }
 
                                                 setInterval('autoRefresh()', 10000); // this will reload page after every 5 secounds; Method I
-                                           </script>
+                                                function ConfirmDelete()
+                                                {
+                                                    var x = confirm("Are you sure you want to delete?");
+                                                    if (x)
+                                                        return true;
+                                                    else
+                                                        return false;
+                                                }
+                                            </script>
                                         </tbody>
                                     </table>
                                 </div>
