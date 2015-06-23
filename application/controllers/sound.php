@@ -20,6 +20,7 @@ class Sound extends CI_Controller {
      
 	public function upload()
 	{
+                $this->load->helper('url');
 		$target_Path = NULL;
 		if ($_FILES['userFile']['name'] != NULL)
 		{
@@ -32,9 +33,10 @@ class Sound extends CI_Controller {
 
 		$tanggal = date("y-m-d");
                
-                $jamMesin = date("h:i:s");
+                //$jamMesin = date("h:i:s");
 		$jam = $_POST['time'];
-		$data = array(
+		
+                $data = array(
 		    'nama_file' => $_POST['judul'],
 		    'path' => $target_Path,
                     'tag' => $_POST['tag'],
@@ -46,19 +48,24 @@ class Sound extends CI_Controller {
 			if ($target_Path != NULL) {
 				move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
 			}
-			  echo '<script language="javascript">';
-			  echo 'alert("File berhasil ditambahkan");';
-			  echo '</script>';
+                        echo '<script language="javascript">';
+                        echo 'alert("File berhasil ditambahkan");';
+                        echo '</script>';
+                        redirect('sound', 'refresh');
+                        //$this->index();
 		}
 		else
 		{
-			  echo '<script language="javascript">';
-			  echo 'alert("Gagal menyimpan file");';
-			  echo '</script>';
+                        echo '<script language="javascript">';
+                        echo 'alert("Gagal menyimpan file");';
+                        echo '</script>';
+                        redirect('sound', 'refresh');
+                        //$this->index();
 		}
                 //echo $jam;
                 //die();
-		$this->index();
+                
+
 	}
 	public function uploadForm()
 	{

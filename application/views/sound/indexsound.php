@@ -62,8 +62,8 @@
                                                 //tanggal local mesin
                                                 $tanggalMesin = date("Y-m-d");
                                                 //conversi nilai str to time
-                                                $timestamp1 = strtotime($tanggal);
-                                                $timestamp2 = strtotime($tanggalMesin);
+                                                $tanggalSql = strtotime($tanggal);
+                                                $tanggalMesin = strtotime($tanggalMesin);
 
                                                 $baseURL = base_url();
                                                 $path = $row['path'];
@@ -71,36 +71,23 @@
                                                //echo $fullPath;
                                                 
                                                 //Check tanggal
-                                                if($timestamp1 == $timestamp2)
+                                                if($tanggalSql == $tanggalMesin)
     
                                                 {
-                                                    
-                                                    date_default_timezone_set('America/Chicago'); // CDT
-
-                                                    $info = getdate();
-                                                    $date = $info['mday'];
-                                                    $month = $info['mon'];
-                                                    $year = $info['year'];
-                                                    $hour = $info['hours'];
-                                                    $min = $info['minutes'];
-                                                    $sec = $info['seconds'];
-
-                                                    $current_date = "$date/$month/$year == $hour:$min:$sec";
-                                                    //echo "THIS". $hour.$min.$sec."<br>";
-                                                    //check jam
-                                                    $jamTempo = $check['time'];
-                                                    $jam = strtotime($jamTempo);
-                                                    $jam2 = date('H:i',strtotime($jamTempo));
-                                                    $jamMesinTempo = date("H:i",time());
-                                                    $jamMesin = strtotime($jamMesinTempo);
-                                                    $jamMesin2 = date('H:i',strtotime($jamMesinTempo));
-                                                    
-                                                    //echo "<br>".$jam.'<br>';
-                                                    //echo $jamMesin.'<br>';
-                                                    
+                                                    //set time zone
+                                                    date_default_timezone_set('Asia/Jakarta'); // CDT
+                                                   
 //if()                                              //Check apakah waktunya sama
-                                                    if($jamMesin == $jam)
+                                                    $timeSQL = $check['time'];
+                                                    $timeSQL = date('H:i',  strtotime($timeSQL));
+                                                    
+                                                    $timeMachine = date("H:i");
+                                                    echo "<br>Machine is".$timeMachine."<br>";
+                                                    echo "SQL is".$timeSQL."<br>";
+                                                    
+                                                    if($timeSQL == $timeMachine)
                                                     {
+                                                        echo "Match";
                                                         //auto play audio
                                                         echo "<audio controls autoplay>";
                                                         echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
@@ -109,16 +96,11 @@
                                                         echo "sama woi";
                                                     }
                                                     else{
-                                                        echo "<br>".$jam2."<br>";
-                                                        echo $jamMesin2."<br>";
-                                                        //echo $jamTempo."<br>";
-                                                        //echo $jamMesinTempo."<br>";
-                                                        echo "masih belum";
-                                                        if($timestamp1 == $timestamp2)
-                                                        {
-                                                            //debug
-                                                            //echo (($jam > $jamMesin)? "Belum Waktunya": "udah kelewat");
-                                                        }
+                                                            if($tanggalMesin == $tanggalSql)
+                                                            {
+                                                                //debug
+                                                                echo (($timeMachine < $timeSQL)? "Belum Waktunya": "udah kelewat");
+                                                            }
                                                         
                                                     }
                                                     
@@ -138,7 +120,7 @@
                                                        window.location = window.location.href;
                                                }
 
-                                                //setInterval('autoRefresh()', 30000); // this will reload page after every 5 secounds; Method I
+                                                setInterval('autoRefresh()', 10000); // this will reload page after every 5 secounds; Method I
                                            </script>
                                         </tbody>
                                     </table>
