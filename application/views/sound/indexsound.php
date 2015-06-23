@@ -53,6 +53,41 @@
                                             </tr>
                                             <?php
                                             $no++;}
+                                            
+                                            
+                                            foreach($file as $check){
+                                                $tanggal=$check['tanggal'];
+                                                //echo $tanggal."<br>";
+                                                
+                                                $tanggalMesin = date("Y-m-d");
+                                                //echo "<br>".$tanggal."<br>";
+                                                //echo $tanggalMesin."<br>";
+                                                
+                                                $timestamp1 = strtotime($tanggal);
+                                                $timestamp2 = strtotime($tanggalMesin);
+                                                //echo $timestamp1."<br>";
+                                                //echo $timestamp2."<br>";
+                                                //echo $row['path']."<br>";
+                                               // echo base_url()."<br>";
+                                                $baseURL = base_url();
+                                                $path = $row['path'];
+                                                $fullPath = base_url().$row['path'];
+                                               //echo $fullPath;
+                                                if($timestamp1 == $timestamp2){
+                                                    //echo "$tanggal is equal to the $tanggalMesin";
+                                                    echo "<audio controls autoplay>";
+                                                  
+                                                    echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
+                                                    echo "Your browser does not support the audio element.
+                                                </audio>";
+
+                                                    //echo "sama";
+                                                }else{
+                                                    //echo ($timestamp1>$timestamp2)? "$tanggal is greater than the $tanggalMesin": "$tanggalMesin is greater than the $tanggal";
+                                                }
+                                                
+                                            }
+                                           
                                             ?>
                                         </tbody>
                                     </table>

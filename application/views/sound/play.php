@@ -22,7 +22,7 @@
                                 <?php echo $file->path; echo "lalalal";?>
                                 <source src="<?php echo base_url();?><?php echo $file->path;?>" type="audio/mpeg">
                                 Your browser does not support the audio element.
-                          </audio>
+                            </audio>
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
