@@ -51,44 +51,95 @@
                                                     <a href="<?php echo base_url();?>sound/delete/<?php echo $row['id'];?>" class="btn btn-danger" value="Delete">Delete</a>
                                                 </td>   
                                             </tr>
+                            <div id="debugTime">
                                             <?php
                                             $no++;}
                                             
                                             
                                             foreach($file as $check){
+                                                //tanggal dari db
                                                 $tanggal=$check['tanggal'];
-                                                //echo $tanggal."<br>";
-                                                
+                                                //tanggal local mesin
                                                 $tanggalMesin = date("Y-m-d");
-                                                //echo "<br>".$tanggal."<br>";
-                                                //echo $tanggalMesin."<br>";
-                                                
+                                                //conversi nilai str to time
                                                 $timestamp1 = strtotime($tanggal);
                                                 $timestamp2 = strtotime($tanggalMesin);
-                                                //echo $timestamp1."<br>";
-                                                //echo $timestamp2."<br>";
-                                                //echo $row['path']."<br>";
-                                               // echo base_url()."<br>";
+
                                                 $baseURL = base_url();
                                                 $path = $row['path'];
                                                 $fullPath = base_url().$row['path'];
                                                //echo $fullPath;
-                                                if($timestamp1 == $timestamp2){
-                                                    //echo "$tanggal is equal to the $tanggalMesin";
-                                                    echo "<audio controls autoplay>";
-                                                  
-                                                    echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
-                                                    echo "Your browser does not support the audio element.
-                                                </audio>";
+                                                
+                                                //Check tanggal
+                                                if($timestamp1 == $timestamp2)
+    
+                                                {
+                                                    
+                                                    date_default_timezone_set('America/Chicago'); // CDT
 
-                                                    //echo "sama";
-                                                }else{
+                                                    $info = getdate();
+                                                    $date = $info['mday'];
+                                                    $month = $info['mon'];
+                                                    $year = $info['year'];
+                                                    $hour = $info['hours'];
+                                                    $min = $info['minutes'];
+                                                    $sec = $info['seconds'];
+
+                                                    $current_date = "$date/$month/$year == $hour:$min:$sec";
+                                                    //echo "THIS". $hour.$min.$sec."<br>";
+                                                    //check jam
+                                                    $jamTempo = $check['time'];
+                                                    $jam = strtotime($jamTempo);
+                                                    $jam2 = date('H:i',strtotime($jamTempo));
+                                                    $jamMesinTempo = date("H:i",time());
+                                                    $jamMesin = strtotime($jamMesinTempo);
+                                                    $jamMesin2 = date('H:i',strtotime($jamMesinTempo));
+                                                    
+                                                    //echo "<br>".$jam.'<br>';
+                                                    //echo $jamMesin.'<br>';
+                                                    
+//if()                                              //Check apakah waktunya sama
+                                                    if($jamMesin == $jam)
+                                                    {
+                                                        //auto play audio
+                                                        echo "<audio controls autoplay>";
+                                                        echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
+                                                        echo "Your browser does not support the audio element.
+                                                        </audio>";
+                                                        echo "sama woi";
+                                                    }
+                                                    else{
+                                                        echo "<br>".$jam2."<br>";
+                                                        echo $jamMesin2."<br>";
+                                                        //echo $jamTempo."<br>";
+                                                        //echo $jamMesinTempo."<br>";
+                                                        echo "masih belum";
+                                                        if($timestamp1 == $timestamp2)
+                                                        {
+                                                            //debug
+                                                            //echo (($jam > $jamMesin)? "Belum Waktunya": "udah kelewat");
+                                                        }
+                                                        
+                                                    }
+                                                    
+                                                }
+                                                else{
                                                     //echo ($timestamp1>$timestamp2)? "$tanggal is greater than the $tanggalMesin": "$tanggalMesin is greater than the $tanggal";
                                                 }
                                                 
                                             }
                                            
                                             ?>
+                            </div>
+                                            <!--refresh div-->
+                                            <script> 
+                                                function autoRefresh()
+                                               {
+                                                       window.location = window.location.href;
+                                               }
+
+                                                //setInterval('autoRefresh()', 30000); // this will reload page after every 5 secounds; Method I
+                                           </script>
                                         </tbody>
                                     </table>
                                 </div>

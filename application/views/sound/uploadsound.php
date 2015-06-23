@@ -35,6 +35,9 @@
                                         </div>      
 
                                         <input name="userFile" type="file" tabindex="1" value="NULL" /> 
+                                        
+                                       
+                                    
                                         <br>
                                         <div class="form-group">
                                         <label>Tag</label>
@@ -56,13 +59,27 @@
                                         
                                         
                                         <div class="form-group">
-                                            <label>Time</label>
-                                            <input type='date' name='time'class="form-control datepicker">
+                                            <label>Date</label>
+                                            <input type='date' name='date' class="form-control datepicker">
                                             <script>
                                                 $(document).ready(function(){
-                                                $('.datepicker').datepicker({
+                                                $('.datepicker').timepicker({
+                                                    format: 'yyyy-mm-dd',
+                                                    //format: 'HH:mm',
+                                                    //timeFormat:  "HH:mm"
+                                                    //format: 'HH:ii'
+                                                });
+                                                });
+                                            </script>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Time</label>
+                                            <input type='time' name='time'class="form-control datepicker">
+                                            <script>
+                                                $(document).ready(function(){
+                                                $('.datepicker').timepicker({
                                                     //format: 'yyyy-mm-dd',
-                                                    format: 'HH:mm',
+                                                    format: 'H:i',
                                                     //timeFormat:  "HH:mm"
                                                     //format: 'HH:ii'
                                                 });

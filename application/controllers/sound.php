@@ -31,13 +31,14 @@ class Sound extends CI_Controller {
 		$this->load->model('m_sound');
 
 		$tanggal = date("y-m-d");
-                $jam = date("h:i:s");
-		
+               
+                $jamMesin = date("h:i:s");
+		$jam = $_POST['time'];
 		$data = array(
 		    'nama_file' => $_POST['judul'],
 		    'path' => $target_Path,
                     'tag' => $_POST['tag'],
-                    'tanggal' => $_POST['time'],
+                    'tanggal' => $_POST['date'],
                     'time' => $jam,
 		);
 		if($this->m_sound->insertFile($data))
@@ -55,6 +56,8 @@ class Sound extends CI_Controller {
 			  echo 'alert("Gagal menyimpan file");';
 			  echo '</script>';
 		}
+                //echo $jam;
+                //die();
 		$this->index();
 	}
 	public function uploadForm()
@@ -76,6 +79,13 @@ class Sound extends CI_Controller {
 		$this->load->view('dashboard/navbar');
 		$this->load->view('sound/play', $data);
 		$this->load->view('dashboard/footer');
+	}
+        public function recordForm()
+	{
+		//$this->load->view('dashboard/header');
+		//$this->load->view('dashboard/navbar');
+		$this->load->view('record/index');
+		//$this->load->view('dashboard/footer');
 	}
        
 	public function delete($id)
