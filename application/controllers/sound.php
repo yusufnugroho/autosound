@@ -89,10 +89,10 @@ class Sound extends CI_Controller {
 	}
         public function recordForm()
 	{
-		//$this->load->view('dashboard/header');
+		$this->load->view('dashboard/header');
 		//$this->load->view('dashboard/navbar');
-		$this->load->view('record/index');
-		//$this->load->view('dashboard/footer');
+		$this->load->view('record/record');
+		$this->load->view('dashboard/footer');
 	}
        
 	public function delete($id)
