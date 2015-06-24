@@ -11,6 +11,7 @@ class Sound extends CI_Controller {
                
                 $this->load->model("m_sound");
 		$data['file'] = $this->m_sound->gettable('soundfile');
+		$data['file2'] = $this->m_sound->gettable('soundfile');
                 $this->load->view('dashboard/header');
 		$this->load->view('dashboard/navbar');
 		$this->load->view('sound/indexsound',$data);
@@ -89,10 +90,10 @@ class Sound extends CI_Controller {
 	}
         public function recordForm()
 	{
-		$this->load->view('dashboard/header');
+		//$this->load->view('dashboard/header');
 		//$this->load->view('dashboard/navbar');
 		$this->load->view('record/record');
-		$this->load->view('dashboard/footer');
+		//$this->load->view('dashboard/footer');
 	}
        
 	public function delete($id)

@@ -56,63 +56,71 @@
                                             $no++;}
                                             
                                             
-                                            foreach($file as $check){
-                                                //tanggal dari db
-                                                $tanggal=$check['tanggal'];
-                                                //tanggal local mesin
-                                                $tanggalMesin = date("Y-m-d");
-                                                //conversi nilai str to time
-                                                $tanggalSql = strtotime($tanggal);
-                                                $tanggalMesin = strtotime($tanggalMesin);
-
-                                                $baseURL = base_url();
-                                                $path = $row['path'];
-                                                $fullPath = base_url().$row['path'];
-                                               //echo $fullPath;
-                                                
-                                                //Check tanggal
-                                                if($tanggalSql == $tanggalMesin)
-    
+                                            foreach($file2   as $check)
                                                 {
-                                                    //set time zone
-                                                    date_default_timezone_set('Asia/Jakarta'); // CDT
-                                                   
-//if()                                              //Check apakah waktunya sama
-                                                    $timeSQL = $check['time'];
-                                                    $timeSQL = date('H:i',  strtotime($timeSQL));
+                                                    echo "<br>";
+
+                                                    $baseURL = base_url();
+                                                    $path = $check['path'];
+                                                    $fullPath = base_url().$check['path'];
                                                     
-                                                    $timeMachine = date("H:i");
-                                                    echo "<br>Machine is".$timeMachine."<br>";
-                                                    echo "SQL is".$timeSQL."<br>";
+                                                    //tanggal dari db
+                                                    $tanggal=$check['tanggal'];
                                                     
-                                                    if($timeSQL == $timeMachine)
+                                                    //tanggal local mesin
+                                                    $tanggalMesin = date("Y-m-d");
+                                                                                                        
+                                                    //conversi nilai str to time    
+                                                    $tanggalSql = strtotime($tanggal);
+                                                    $tanggalMesin = strtotime($tanggalMesin);
+
+
+                                                   //echo $fullPath;
+
+                                                    //Check tanggal
+                                                    if($tanggalSql == $tanggalMesin)
+
                                                     {
-                                                        echo "Match";
-                                                        //auto play audio
-                                                        echo "<audio controls autoplay>";
-                                                        echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
-                                                        echo "Your browser does not support the audio element.
-                                                        </audio>";
-                                                        echo "sama woi";
+                                                        //set time zone
+                                                        date_default_timezone_set('Asia/Jakarta'); // CDT
+
+    //if()                                              //Check apakah waktunya sama
+                                                        $timeSQL = $check['time'];
+                                                        $timeSQL = date('H:i',  strtotime($timeSQL));
+
+                                                        $timeMachine = date("H:i");
+                                                        echo "<br>Machine is".$timeMachine."<br>";
+                                                        echo "SQL is".$timeSQL."<br>";
+
+                                                        if($timeSQL == $timeMachine)
+                                                        {
+                                                            
+                                                            echo "Match";
+                                                            //auto play audio
+                                                            echo "<audio controls autoplay>";
+                                                            echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
+                                                            echo "Your browser does not support the audio element.
+                                                            </audio>";
+                                                            echo "sama woi";
+                                                        }
+                                                        else{
+                                                                if($tanggalMesin == $tanggalSql)
+                                                                {
+                                                                    //debug
+                                                                    echo (($timeMachine < $timeSQL)? "Belum Waktunya": "udah kelewat");
+                                                                }
+
+                                                        }
+
                                                     }
                                                     else{
-                                                            if($tanggalMesin == $tanggalSql)
-                                                            {
-                                                                //debug
-                                                                echo (($timeMachine < $timeSQL)? "Belum Waktunya": "udah kelewat");
-                                                            }
-                                                        
+                                                        //echo ($timestamp1>$timestamp2)? "$tanggal is greater than the $tanggalMesin": "$tanggalMesin is greater than the $tanggal";
                                                     }
-                                                    
+
                                                 }
-                                                else{
-                                                    //echo ($timestamp1>$timestamp2)? "$tanggal is greater than the $tanggalMesin": "$tanggalMesin is greater than the $tanggal";
-                                                }
-                                                
-                                            }
-                                           
-                                            ?>
-                            </div>
+
+                                                ?>
+                                </div>
                                             <!--refresh div-->
                                             <script> 
                                                 function autoRefresh()
