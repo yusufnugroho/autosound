@@ -45,6 +45,9 @@
                                 <li>
                                     <a href="<?php echo base_url();?>sound/recordForm">Record Audio</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo base_url();?>sound/recordForm2">Record Audio 2</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

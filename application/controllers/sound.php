@@ -90,9 +90,26 @@ class Sound extends CI_Controller {
 	}
         public function recordForm()
 	{
+                $this->load->helper('url');
+                $base = base_url();
+                $base = $base."record/audio-recorder.html";
+                //redirect($base);
+                //echo "Ini base : ".$base."<br>";
+		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/navbar');
+		$this->load->view('record/record');
+		$this->load->view('dashboard/footer');
+	}
+        public function recordForm2()
+	{
+                $this->load->helper('url');
+                $base = base_url();
+                $base = $base."record2/index2.php";
+                redirect($base);
+                //echo "Ini base : ".$base."<br>";
 		//$this->load->view('dashboard/header');
 		//$this->load->view('dashboard/navbar');
-		$this->load->view('record/record');
+		//$this->load->view('record2/index');
 		//$this->load->view('dashboard/footer');
 	}
        
