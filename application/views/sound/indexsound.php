@@ -93,24 +93,24 @@
                                                         $timeSQL = date('H:i',  strtotime($timeSQL));
 
                                                         $timeMachine = date("H:i");
-                                                        echo "<br>Machine is".$timeMachine."<br>";
-                                                        echo "SQL is".$timeSQL."<br>";
+                                                        //echo "<br>Machine is".$timeMachine."<br>";
+                                                        //echo "SQL is".$timeSQL."<br>";
                                                         
                                                         ///////////////////////////////
                                                         //JAVASCRIPT RESERVED
                                                         ///////////////////////////////
                                                         
                                                         $gudangPetasan[] = $timeSQL;
-                                                        echo "hallo";
-                                                        print_r ($gudangPetasan);
+                                                        //echo "hallo";
+                                                        //print_r ($gudangPetasan);
                                                         ///////////////////////////////
                                                         if($timeSQL == $timeMachine)
                                                         {
                                                             
-                                                            echo "Match";
+                                                            //echo "Match";
                                                             //auto play audio
-                                                            echo "<div id='player'>";
-                                                            echo "<audio controls autoplay>";
+                                                            echo "<div id='player' >";
+                                                            echo "<audio controls autoplay >";
                                                             echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
                                                             echo "Your browser does not support the audio element.
                                                             </audio></div>";
@@ -120,7 +120,7 @@
                                                                 if($tanggalMesin == $tanggalSql)
                                                                 {
                                                                     //debug
-                                                                    echo (($timeMachine < $timeSQL)? "Belum Waktunya": "udah kelewat");
+                                                                    //echo (($timeMachine < $timeSQL)? "Belum Waktunya": "udah kelewat");
                                                                 }
 
                                                         }
@@ -175,7 +175,7 @@
 
 
                                             <script>
-                                            var myVar=setInterval(function(){myTimer(),checkValue()},1000);
+                                            var myVar=setInterval(function(){myTimer(),checkValue()},100);
 
                                             function myTimer() {
                                                 
@@ -209,8 +209,22 @@
                                                     var array = <?php echo json_encode($gudangPetasan)?>;
                                                     
                                                     var sqlTime = array[0];
+     //var sqlTime1 = sqlTime.subtr(5,5);
+     //var sqlTime1 = String(sqlTime1);
+    /*
+                                                   
+    */
+   //alert(sqlTime1);
+   /*
+                                                    var sqlTime1 = parseInt(sqlTime1);
+                                                    var sqlTime1 = sqlTime1-1;
+                                                    var sqlTime1 = String(sqlTime1);
+                                                    var sqlTime = sqlTime.subtr(0,4);
+                                                    var sqlTime = sqlTime.concat(sqlTime1);
                                                     //alert(array[0]);
                                                     //alert(time);
+                                                   */
+                                                    //alert(sqlTime);
                                                     if(sqlTime == timeMachine ){
                                                         //alert("sama Coy");
                                                         reload();
