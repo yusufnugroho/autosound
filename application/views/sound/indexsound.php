@@ -99,8 +99,46 @@
                                                         ///////////////////////////////
                                                         //JAVASCRIPT RESERVED
                                                         ///////////////////////////////
+                                                        $jam = substr($timeSQL, 0,2);
+                                                        $menit = substr($timeSQL, 3,5);
+                                                        //echo $timeSQL."<br>".$jam." Ini Jam : ".$jam."|| Ini Menit : ".$menit."<br>";
                                                         
-                                                        $gudangPetasan[] = $timeSQL;
+                                                        
+                                                        if($menit==00){
+                                                            //echo "nolnol";
+                                                            $menit=59;
+                                                            $jam-1;
+
+                                                        }
+                                                        else{
+                                                            //echo "menit sebelum : ".$menit."<br>";
+
+                                                            $menit=$menit-1;
+                                                            //echo "menit sesudah : ".$menit."<br>";
+                                                            if($menit<10){
+                                                                $menit = "0".$menit;
+                                                            }
+                                                            //echo "Ini menit : ".$menit;
+                                                        }
+                                                        if($jam<10);
+                                                        {$jam-1;$jam+1;}
+                                                        $timeSQLbaru = $jam.":".$menit;
+                                                        $timeSQLbaru12JAM = date("h:i:s", strtotime($timeSQLbaru));
+                                                        
+                                                        $timeSQLbaru12JAM = substr($timeSQLbaru12JAM,1,5);
+                                                        
+                                                        //echo $timeSQLbaru12JAM;
+                                                        //echo "Baru : ".$timeSQLbaru."<br>";
+                                                        //echo "Lama : ".$timeSQL;
+                                                        //die();
+                                                        //echo $jam;
+                                                        //echo "jambret";
+                                                        //die();
+                                                        $gudangPetasan[] = $timeSQLbaru12JAM;
+                                                        //print_r $gudangPetasan[];
+                                                        //die();
+                                                        
+                                                        
                                                         //echo "hallo";
                                                         //print_r ($gudangPetasan);
                                                         ///////////////////////////////
@@ -224,6 +262,7 @@
                                                     //alert(array[0]);
                                                     //alert(time);
                                                    */
+                                                    //alert(timeMachine)
                                                     //alert(sqlTime);
                                                     if(sqlTime == timeMachine ){
                                                         //alert("sama Coy");
