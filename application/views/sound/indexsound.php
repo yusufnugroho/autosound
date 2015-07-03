@@ -31,7 +31,10 @@
                                     <th class='text-center' width='14%'>Action</th>
                                 </tr>   
                             </thead>
-                            <tbody>                                
+                            <div id="demoMasak">
+                                
+                            </div>
+                            <tbody >                                
                                 
                                     <?php
                                     $no = 1;
@@ -55,6 +58,7 @@
                                             <?php
                                             $no++;}
                                             
+                                            $gudangPetasan = array();
                                             
                                             foreach($file2   as $check)
                                                 {
@@ -91,17 +95,26 @@
                                                         $timeMachine = date("H:i");
                                                         echo "<br>Machine is".$timeMachine."<br>";
                                                         echo "SQL is".$timeSQL."<br>";
-
+                                                        
+                                                        ///////////////////////////////
+                                                        //JAVASCRIPT RESERVED
+                                                        ///////////////////////////////
+                                                        
+                                                        $gudangPetasan[] = $timeSQL;
+                                                        echo "hallo";
+                                                        print_r ($gudangPetasan);
+                                                        ///////////////////////////////
                                                         if($timeSQL == $timeMachine)
                                                         {
                                                             
                                                             echo "Match";
                                                             //auto play audio
+                                                            echo "<div id='player'>";
                                                             echo "<audio controls autoplay>";
                                                             echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
                                                             echo "Your browser does not support the audio element.
-                                                            </audio>";
-                                                            echo "sama woi";
+                                                            </audio></div>";
+                                                            
                                                         }
                                                         else{
                                                                 if($tanggalMesin == $tanggalSql)
@@ -128,7 +141,7 @@
                                                     window.location = window.location.href;
                                                }
 
-                                                setInterval('autoRefresh()', 10000); // this will reload page after every 5 secounds; Method I
+                                                //setInterval('autoRefresh()', 10000); // this will reload page after every 5 secounds; Method I
                                                 function ConfirmDelete()
                                                 {
                                                     var x = confirm("Are you sure you want to delete?");
@@ -138,6 +151,84 @@
                                                         return false;
                                                 }
                                             </script>
+                                            
+                                            
+                                            <!--TESTING AREA-->
+                                            
+                                            
+                                            <div id="dom-target" style="display: none;">
+                                                <?php 
+                                                    date_default_timezone_set('Asia/Jakarta');
+                                                    $timeMachine = date("H:i");
+
+
+
+                                                    $output = "47"; 
+                                                    echo htmlspecialchars($output);
+                                                    $spliter = "yusuf";
+                                                    echo htmlspecialchars($spliter);
+                                                    $lala ="43";
+                                                    echo htmlspecialchars($lala);
+                                                ?>
+                                            </div>
+
+
+
+                                            <script>
+                                            var myVar=setInterval(function(){myTimer(),checkValue()},1000);
+
+                                            function myTimer() {
+                                                
+                                                //var d = new Date(hours, minutes, seconds, milliseconds);
+                                                var d = new Date();
+                                                document.getElementById("demoMasak").innerHTML = d.toLocaleTimeString();
+                                            }
+                                            function checkValue(){
+                                                    //alert("hallo");
+                                                    /*var div = document.getElementById("dom-target");
+                                                    var myData = div.textContent;
+                                                    var hasilSplit = myData.split("yusuf");
+                                                    var hasilSplit1 = hasilSplit[0];
+                                                    var hasilSplit2 = hasilSplit[1];
+
+                                                    var time = "<?php echo $timeMachine; ?>";
+                                                    */
+                                                    //
+                                                    var d = new Date();
+                                                    var tempTime = d.toLocaleTimeString();
+                                                    
+                                                    var timeMachine = tempTime.substr(0, 5); 
+
+                                                    //alert(part1);
+                                                    
+                                                    //
+                                                    
+                                                    
+                                                    
+                                                    var array = new Array();
+                                                    var array = <?php echo json_encode($gudangPetasan)?>;
+                                                    
+                                                    var sqlTime = array[0];
+                                                    //alert(array[0]);
+                                                    //alert(time);
+                                                    if(sqlTime == timeMachine ){
+                                                        //alert("sama Coy");
+                                                        reload();
+                                                    }
+                                                    else{
+                                                        //alert("beda");
+                                                        //reload();
+                                                    }
+
+
+                                            }
+                                            function reload(){
+                                                location.reload();
+                                            }
+                                            </script>
+                              
+                                            
+                                    <!--END OF TESTING AREA-->
                                         </tbody>
                                     </table>
                                 </div>
