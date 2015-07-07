@@ -260,13 +260,13 @@
                                             <!--TESTING AREA-->
                                         
                                             <script>
-                                            var myVar=setInterval(function(){myTimer(),checkValue()},100);
+                                            var myVar=setInterval(function(){myTimer(),checkValue()},1000);
 
                                             function myTimer() {
                                                 
                                                 //var d = new Date(hours, minutes, seconds, milliseconds);
                                                 var d = new Date();
-                                                //document.getElementById("demoMasak").innerHTML = d.toLocaleTimeString();
+                                                document.getElementById("demoMasak").innerHTML = d.toLocaleTimeString();
                                             }
                                             function checkValue(){
                                                    
@@ -277,65 +277,24 @@
 
                                                     var d = new Date();
                                                     var tempTime = d.toLocaleTimeString();
-                                                    //alert(tempTime);
+                                                    //take second
+                                                    ///////////////////////////
+                                                    var secondOnMachine = tempTime.substr(-5,6);
+                                                    secondOnMachine = secondOnMachine.substr(0,3);
+                                                    ///////////////////////////
+                                                    
+                                                    //alert(tempTime+" || "+secondOnMachine);
                                                     var timeMachine = tempTime.substr(0, 5); 
 
                                                     var array = new Array();
-                                                    var array2 = new Array();
-                                                    var array3 = new Array();
+
                                                     var array = <?php echo json_encode($gudangPetasan)?>;
-                                                    
-                                                    //
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    //Ready to compare tempTime || array2[0]
-                                                    //
-                                                    //check time
-                                                    var a = array.toString();
+                                                    //var a = array.toString();
                                                     //var b = array2.toString();
                                                     //alert(a);
                                                     //alert(array2[0]+"---"+tempTime);
                                                     
-                                                    //cek waktu
-                                                    //jam fetch dari sql
-/*                                                    
-                                                    var X = array2[0];
-                                                    var X = X.toString();
-                                                    var Y = tempTime;
-                                                    var Y = Y.toString();
-                                                    //alert(Y);
-                                                    var jamX = parseInt(X.substr(0,1));
-                                                    var menitX = X.substr(4,6);
-                                                    var detikX = X.substr(8,9);
-*/
-    
-                                                    //var jamY = parseInt(Y.substr(0,1));
-                                                    //var jamY = Y.substr(0,2);
-/*
-                                                    if(length(jamY)==1){
-                                                        var detikY = parseInt(Y.substr(5,7));
-                                                    }
-  */                                                  
-                                                    //alert(Y);
-                                                    //  alert(menitY);
-                                                    //alert(jamX+":"+menitX+":"detikX+"<br>");
-                                                    /*
-                                                     * 
-                                                     */
-                                                    //alert (jamY);
-                                                    //alert(Y.length);
-                                                    /*
-                                                    for(i=0;i<(Y.length);i++){
-                                                        var R = Y.substr(i,i+1);
-                                                        R = R+i+(i+1);
-                                                        array3.push(R);
-                                                    }
                                                     
-                                                    var c = array3.toString();
-                                                    alert(c);
-                                                    */
                                                     
                                                     var sqlTime = array[0];
                                                    
@@ -346,11 +305,19 @@
                                                     }
                                                     //alert(panjangMesin+"---"+panjangSql+"<br>");
                                                     //alert(sqlTime+"-----"+timeMachine);
-
+                                                    var dt = new Date();
+                                                    var secs = dt.getSeconds() + (60 * (dt.getMinutes() + (60 * dt.getHours())));
+                                                    //alert(secs);
+                                                    
                                                     if(sqlTime == timeMachine )
                                                     {
-                                                        //alert("sama Coy");
-                                                        reload();
+                                                        //Cek jika sudah h-10 detik
+                                                        if(secondOnMachine>55)
+                                                        {
+                                                            //alert("sama");
+                                                            reload();                                                            
+                                                        }
+
                                                     }
                                                     else{
                                                        
