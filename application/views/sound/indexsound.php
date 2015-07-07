@@ -101,13 +101,7 @@
                                                         $timeMachine12 = date("h:i");
                                                         $timeMachine24 = date("H:i");
                                                         
-                                                        
-                                                        //echo "Asli  Nih : ".$timeSQL24."<br>";
-                                                        //echo "Mesin Nih : ".$timeMachine24."<br>";
-                                                        
-                                                        //$timeMachine24 = date("H:i",  strtotime($timeMachine));
-                                                        //echo "<br>SQL > ".$timeSQL."|| MAC > ".$timeMachine."<br>";
-                                                        
+                                                      
                                                         
                                                         if($timeSQL24 > $timeMachine24){
                                                             //echo "Besar<br>";
@@ -173,51 +167,47 @@
                                                             }
                                                             else{
  
-                                                                $timeSQLbaru12JAM = substr($timeSQLbaru12JAM,0,5);
-                                                                
+                                                                $timeSQLbaru12JAM = substr($timeSQLbaru12JAM,0,5);   
                                                             }
-                                                            
-                                                            //echo "Ini yang dikirim >>> ". $timeSQLbaru12JAM."<br>";
                                                             $timeSQLbaru12JAM = date("g:i", strtotime($timeSQLbaru12JAM));
                                                             $gudangPetasan[] = $timeSQLbaru12JAM;
                                                             sort($gudangPetasan);
                                                             rsort($gudangPetasan);
-                                                            
-                                                            //$arrayTime[]    =   $timeSQLPure;
-                                                            //sort($arrayTime);
-                                                            //print_r($gudangPetasan);
+                                                          
                                                             
                                                         }
-                                                        
-                                                        
-                                                        
-                                                        ///////////////////////////////
-                                                        //echo $timeMachine ."--------".$timeSQL24."<br>";
                                                         
                                                         
                                                         //Jika Waktu direfresh Manual
                                                         if($timeSQL24 == $timeMachine){
-                                                            //echo "Manual";
+                                                            echo "Manual";
                                                             echo "<div id='player' >";
                                                             echo "<audio controls autoplay >";
                                                             echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
                                                             echo "Your browser does not support the audio element.
                                                             </audio></div>";
                                                         }
-                                                        //echo $timeMachine12 ."--------".$timeSQLbaru."<br>";
+                                                        
                                                         $timeSQLbaru = date("h:i", strtotime($timeSQLbaru));
                                                         $timeMachine12 = date("h:i", strtotime($timeMachine12));
                                                         
-                                                        
+                                                        //echo $timeMachine12 ."--------".$timeSQLbaru."<br>";
+                                                                                                                      $detail = date("H:i:s");
+                                                        $detik = date("H:i:s");
+                                                        $detik = substr($detik, 6,2);
+                                                        //echo $detik."<br>";
                                                         //Menggunakan Javascript
                                                         if($timeSQLbaru == $timeMachine12){
                                                             //echo "Javascript";
-                                                            
-                                                            echo "<div id='player' >";
-                                                            echo "<audio controls autoplay >";
-                                                            echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
-                                                            echo "Your browser does not support the audio element.
-                                                            </audio></div>";
+                                                            //second
+                                                            if($detik>58)
+                                                            {
+                                                                echo "<div id='player' >";
+                                                                echo "<audio controls autoplay >";
+                                                                echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
+                                                                echo "Your browser does not support the audio element.
+                                                                </audio></div>";
+                                                            }
                                                         }
                                                         
                                                         else{
@@ -312,7 +302,7 @@
                                                     if(sqlTime == timeMachine )
                                                     {
                                                         //Cek jika sudah h-10 detik
-                                                        if(secondOnMachine>55)
+                                                        if(secondOnMachine>58)
                                                         {
                                                             //alert("sama");
                                                             reload();                                                            
