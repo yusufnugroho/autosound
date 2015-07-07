@@ -89,11 +89,35 @@
 
     //if()                                              //Check apakah waktunya sama
                                                         $timeSQL = $check['time'];
-                                                        $timeSQL = date('H:i',  strtotime($timeSQL));
-                                                        $timeSQLPure = date('H:i:s',  strtotime($timeSQL));
+                                                        $timeSQL2 = $check['time'];
+
+                                                        
+                                                        $timeSQL = date('h:i',  strtotime($timeSQL));
+                                                        $timeSQL24 = date('H:i',  strtotime($timeSQL2));
+                                                        //echo "time SQL 24 >> ".$timeSQL."<br>";
                                                         
                                                         
                                                         $timeMachine = date("H:i");
+                                                        $timeMachine12 = date("h:i");
+                                                        $timeMachine24 = date("H:i");
+                                                        
+                                                        
+                                                        //echo "Asli  Nih : ".$timeSQL24."<br>";
+                                                        //echo "Mesin Nih : ".$timeMachine24."<br>";
+                                                        
+                                                        //$timeMachine24 = date("H:i",  strtotime($timeMachine));
+                                                        //echo "<br>SQL > ".$timeSQL."|| MAC > ".$timeMachine."<br>";
+                                                        
+                                                        
+                                                        if($timeSQL24 > $timeMachine24){
+                                                            //echo "Besar<br>";
+                                                        }
+                                                        else{
+                                                            //echo "Kecil<br>";
+                                                        }
+                                                        
+                                                        
+                                                        
                                                         //echo "<br>Machine is".$timeMachine."<br>";
                                                         //echo "SQL is".$timeSQL."<br>";
                                                         
@@ -101,6 +125,7 @@
                                                         //JAVASCRIPT RESERVED
                                                         ///////////////////////////////
                                                         $jam = substr($timeSQL, 0,2);
+                                                        //echo "ini jam : ".$jam."<br>";
                                                         $menit = substr($timeSQL, 3,5);
                                                         //echo $timeSQL."<br>".$jam." Ini Jam : ".$jam."|| Ini Menit : ".$menit."<br>";
                                                         
@@ -123,46 +148,71 @@
                                                         }
                                                         if($jam<10);
                                                         {
-                                                            //delete "0"
+                                                            //trim "0"
                                                             $jam-1;$jam+1;
                                                             
                                                         }
+                                                        
                                                         $timeSQLbaru = $jam.":".$menit;
-                                                       
-                                                        $timeSQLbaru12JAM = date("h:i:s", strtotime($timeSQLbaru));
+                                                        //echo "Ini : ".$timeSQLbaru."<br>";
+                                                        $timeSQLbaru12JAM = date("h:i", strtotime($timeSQLbaru));
                                                         //$arrayTime[] = $timeSQLbaru12JAM;
                                                         //sort($arrayTime);
-                                                        if($timeSQLbaru12JAM>$timeMachine)
+                                                        
+                                                        
+                                                        //echo ">> : ".$timeSQLbaru12JAM."||".$timeMachine."<br>";
+                                                        
+                                                        //Check AM and PM
+                                                        if($timeSQLbaru12JAM>$timeMachine || $timeSQL24 > $timeMachine24)
                                                         {
-                                                            $timeSQLbaru12JAM = substr($timeSQLbaru12JAM,1,5);
-                                                            //echo $timeSQLbaru12JAM."<br>";
+                                                            //echo "Aloha";
+                                                            // under 10
+                                                            if(strlen($timeSQLbaru)==1){
+                                                                //echo "under ten<br>";
+                                                                $timeSQLbaru12JAM = substr($timeSQLbaru12JAM,1,5);    
+                                                            }
+                                                            else{
+ 
+                                                                $timeSQLbaru12JAM = substr($timeSQLbaru12JAM,0,5);
+                                                                
+                                                            }
+                                                            
+                                                            //echo "Ini yang dikirim >>> ". $timeSQLbaru12JAM."<br>";
+                                                            $timeSQLbaru12JAM = date("g:i", strtotime($timeSQLbaru12JAM));
                                                             $gudangPetasan[] = $timeSQLbaru12JAM;
                                                             sort($gudangPetasan);
+                                                            rsort($gudangPetasan);
                                                             
-                                                            $arrayTime[]    =   $timeSQLPure;
-                                                            sort($arrayTime);
-                                                            //print_r($arrayTime);
+                                                            //$arrayTime[]    =   $timeSQLPure;
+                                                            //sort($arrayTime);
+                                                            //print_r($gudangPetasan);
                                                             
                                                         }
                                                         
                                                         
                                                         
                                                         ///////////////////////////////
-                                                        //echo $timeMachine ."--------".$timeSQLbaru."<br>";
+                                                        //echo $timeMachine ."--------".$timeSQL24."<br>";
                                                         
-
+                                                        
                                                         //Jika Waktu direfresh Manual
-                                                        if($timeSQL == $timeMachine){
-                                                            //echo "sama";
+                                                        if($timeSQL24 == $timeMachine){
+                                                            //echo "Manual";
                                                             echo "<div id='player' >";
                                                             echo "<audio controls autoplay >";
                                                             echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
                                                             echo "Your browser does not support the audio element.
                                                             </audio></div>";
                                                         }
+                                                        //echo $timeMachine12 ."--------".$timeSQLbaru."<br>";
+                                                        $timeSQLbaru = date("h:i", strtotime($timeSQLbaru));
+                                                        $timeMachine12 = date("h:i", strtotime($timeMachine12));
+                                                        
+                                                        
                                                         //Menggunakan Javascript
-                                                        if($timeSQLbaru == $timeMachine){
-                                                            //echo "sama";
+                                                        if($timeSQLbaru == $timeMachine12){
+                                                            //echo "Javascript";
+                                                            
                                                             echo "<div id='player' >";
                                                             echo "<audio controls autoplay >";
                                                             echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
@@ -234,7 +284,7 @@
                                                     var array2 = new Array();
                                                     var array3 = new Array();
                                                     var array = <?php echo json_encode($gudangPetasan)?>;
-                                                    var array2 = <?php echo json_encode($arrayTime)?>;
+                                                    
                                                     //
                                                     
                                                     
@@ -243,45 +293,66 @@
                                                     //Ready to compare tempTime || array2[0]
                                                     //
                                                     //check time
-                                                    //var a = array.toString();
+                                                    var a = array.toString();
                                                     //var b = array2.toString();
-                                                    
+                                                    //alert(a);
                                                     //alert(array2[0]+"---"+tempTime);
                                                     
                                                     //cek waktu
                                                     //jam fetch dari sql
-                                                    
+/*                                                    
                                                     var X = array2[0];
                                                     var X = X.toString();
                                                     var Y = tempTime;
                                                     var Y = Y.toString();
                                                     //alert(Y);
-                                                    var jamX = parseInt(X.substr(0,2));
+                                                    var jamX = parseInt(X.substr(0,1));
                                                     var menitX = X.substr(4,6);
                                                     var detikX = X.substr(8,9);
-
+*/
     
-                                                    var jamY = parseInt(Y.substr(0,2));
-                                                    var menitY = Y.substr(3,4);
-                                                    var detikY = Y.substr(8,9);
+                                                    //var jamY = parseInt(Y.substr(0,1));
+                                                    //var jamY = Y.substr(0,2);
+/*
+                                                    if(length(jamY)==1){
+                                                        var detikY = parseInt(Y.substr(5,7));
+                                                    }
+  */                                                  
                                                     //alert(Y);
-                                                    //alert(menitY);
+                                                    //  alert(menitY);
                                                     //alert(jamX+":"+menitX+":"detikX+"<br>");
-                                                    /*for(i=0;i<X.length;i++){
-                                                        var R = X.substr(i);
+                                                    /*
+                                                     * 
+                                                     */
+                                                    //alert (jamY);
+                                                    //alert(Y.length);
+                                                    /*
+                                                    for(i=0;i<(Y.length);i++){
+                                                        var R = Y.substr(i,i+1);
+                                                        R = R+i+(i+1);
                                                         array3.push(R);
                                                     }
-                                                    var c= array3.toString();
+                                                    
+                                                    var c = array3.toString();
                                                     alert(c);
                                                     */
                                                     
                                                     
                                                     
                                                     
-                                                    
+                                                    //alert(timeMachine);
                                                     var sqlTime = array[0];
+                                                    //alert(sqlTime);
+                                                    var panjangSql = sqlTime.length;
+                                                    var panjangMesin = timeMachine.length;
+                                                    if(panjangSql==4){
+                                                        sqlTime = sqlTime+":";
+                                                    }
+                                                    //alert(panjangMesin+"---"+panjangSql+"<br>");
+                                                    //alert(sqlTime+"-----"+timeMachine);
 
-                                                    if(sqlTime == timeMachine ){
+                                                    if(sqlTime == timeMachine )
+                                                    {
                                                         //alert("sama Coy");
                                                         reload();
                                                     }
