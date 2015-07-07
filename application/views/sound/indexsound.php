@@ -93,6 +93,7 @@
 
                                                         
                                                         $timeSQL = date('h:i',  strtotime($timeSQL));
+                                                        
                                                         $timeSQL24 = date('H:i',  strtotime($timeSQL2));
                                                         //echo "time SQL 24 >> ".$timeSQL."<br>";
                                                         
@@ -102,19 +103,14 @@
                                                         $timeMachine24 = date("H:i");
                                                         
                                                       
-                                                        
+                                                        /*
                                                         if($timeSQL24 > $timeMachine24){
                                                             //echo "Besar<br>";
                                                         }
                                                         else{
                                                             //echo "Kecil<br>";
-                                                        }
-                                                        
-                                                        
-                                                        
-                                                        //echo "<br>Machine is".$timeMachine."<br>";
-                                                        //echo "SQL is".$timeSQL."<br>";
-                                                        
+                                                        }*/
+                                                       
                                                         ///////////////////////////////
                                                         //JAVASCRIPT RESERVED
                                                         ///////////////////////////////
@@ -126,14 +122,14 @@
                                                         
                                                         if($menit==00){
                                                             //echo "nolnol";
-                                                            $menit=59;
-                                                            $jam-1;
+                                                            //$menit=59;
+                                                            //$jam-1;
 
                                                         }
                                                         else{
                                                             //echo "menit sebelum : ".$menit."<br>";
 
-                                                            $menit=$menit-1;
+                                                            //$menit=$menit-1;
                                                             //echo "menit sesudah : ".$menit."<br>";
                                                             if($menit<10){
                                                                 $menit = "0".$menit;
@@ -150,6 +146,8 @@
                                                         $timeSQLbaru = $jam.":".$menit;
                                                         //echo "Ini : ".$timeSQLbaru."<br>";
                                                         $timeSQLbaru12JAM = date("h:i", strtotime($timeSQLbaru));
+                                                        //$timeSQLbaru12JAM2 = date("g:i", strtotime($timeSQLbaru));
+                                                        //echo "Ini tanpa dikurangi satu : ".$timeSQLbaru12JAM."<br>";
                                                         //$arrayTime[] = $timeSQLbaru12JAM;
                                                         //sort($arrayTime);
                                                         
@@ -172,7 +170,8 @@
                                                             $timeSQLbaru12JAM = date("g:i", strtotime($timeSQLbaru12JAM));
                                                             $gudangPetasan[] = $timeSQLbaru12JAM;
                                                             sort($gudangPetasan);
-                                                            rsort($gudangPetasan);
+                                                            //rsort($gudangPetasan);
+                                                            //print_r($gudangPetasan);
                                                           
                                                             
                                                         }
@@ -180,7 +179,7 @@
                                                         
                                                         //Jika Waktu direfresh Manual
                                                         if($timeSQL24 == $timeMachine){
-                                                            echo "Manual";
+                                                            //echo "Manual";
                                                             echo "<div id='player' >";
                                                             echo "<audio controls autoplay >";
                                                             echo "<source src=\"".$fullPath."\" type=\"audio/mpeg\">";
@@ -302,9 +301,9 @@
                                                     if(sqlTime == timeMachine )
                                                     {
                                                         //Cek jika sudah h-10 detik
-                                                        if(secondOnMachine>58)
+                                                        if(secondOnMachine==1||secondOnMachine==2)
                                                         {
-                                                            //alert("sama");
+                                                            alert("sama");
                                                             reload();                                                            
                                                         }
 
