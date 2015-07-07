@@ -337,12 +337,8 @@
                                                     alert(c);
                                                     */
                                                     
-                                                    
-                                                    
-                                                    
-                                                    //alert(timeMachine);
                                                     var sqlTime = array[0];
-                                                    //alert(sqlTime);
+                                                   
                                                     var panjangSql = sqlTime.length;
                                                     var panjangMesin = timeMachine.length;
                                                     if(panjangSql==4){
@@ -357,8 +353,7 @@
                                                         reload();
                                                     }
                                                     else{
-                                                        //alert("beda");
-                                                        //reload();
+                                                       
                                                     }
 
 
