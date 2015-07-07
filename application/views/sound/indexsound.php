@@ -260,7 +260,7 @@
                                             <!--TESTING AREA-->
                                         
                                             <script>
-                                            var myVar=setInterval(function(){myTimer(),checkValue()},1000);
+                                            var myVar=setInterval(function(){myTimer(),checkValue()},100);
 
                                             function myTimer() {
                                                 
