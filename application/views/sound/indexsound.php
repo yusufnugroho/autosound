@@ -171,7 +171,7 @@
                                                             $gudangPetasan[] = $timeSQLbaru12JAM;
                                                             sort($gudangPetasan);
                                                             //rsort($gudangPetasan);
-                                                            //print_r($gudangPetasan);
+                                                            print_r($gudangPetasan);
                                                           
                                                             
                                                         }
@@ -292,15 +292,17 @@
                                                     if(panjangSql==4){
                                                         sqlTime = sqlTime+":";
                                                     }
-                                                    //alert(panjangMesin+"---"+panjangSql+"<br>");
+                                                    var XX = panjangMesin+"---"+panjangSql+"<br>";
+                                                    //document.getElementById("demoMasak").innerHTML = XX;
                                                     //alert(sqlTime+"-----"+timeMachine);
-                                                    var dt = new Date();
-                                                    var secs = dt.getSeconds() + (60 * (dt.getMinutes() + (60 * dt.getHours())));
+                                                    //var dt = new Date();
+                                                    //var secs = dt.getSeconds() + (60 * (dt.getMinutes() + (60 * dt.getHours())));
                                                     //alert(secs);
                                                     
                                                     if(sqlTime == timeMachine )
                                                     {
-                                                        //Cek jika sudah h-10 detik
+                                                        //Cek jika sudah h-10 detik//
+                                                        alert("siap-");
                                                         if(secondOnMachine==1||secondOnMachine==2)
                                                         {
                                                             alert("sama");
